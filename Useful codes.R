@@ -40,6 +40,8 @@ levels(as.factor(penguins_clean_data$stage))    # the levels in our cleaned colu
 
 
 
+#### ----- Codes for organising datasets ----- ####
+
 
 
 
