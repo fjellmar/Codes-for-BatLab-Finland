@@ -20,11 +20,29 @@ summary(penguins_raw$`Body Mass (g)`)   # gives you a quick overview of a specif
 
 install.packages("naniar")              # package that helps you visualise missing observations (NA) in your dataset
 library(naniar)
-vis_miss(penguins_raw)                  # makes a visualisation of your dataset as a table, where missing values are marked in black
+vis_miss(penguins_raw)                  # makes a visualisation of your dataset as a table, where missing observations are marked in black
 
 
 # Codes for initial cleaning
 install.packages("janitor")             # package with code for improving column-names
 library(janitor)                    
 penguins_clean_data <- clean_names(penguins_raw)  # saves a new dataset with clean column-names (try names() for each of the two datasets to see the difference)
+
+penguins_clean_data$stage[1:50] <- "adult, 2 egg" # for practise, let's change the 1st to the 50th observation in the 'stage' column (the original observation was "Adult, 1 Egg Stage") 
+penguins_clean_data$stage[100] <- "adlut, 2 egg"  # for practise, let's add a typo in the 100th observation
+penguins_clean_data$stage <- as.factor(penguins_clean_data$stage) # converting the 'stage'-variable from a character into a factor for the next codes to work
+levels(penguins_clean_data$stage)       # this code now shows that the 'stage'-variable has three levels: "adlut, 2 egg" , "Adult, 1 Egg Stage" and "adult, 2 egg"
+
+penguins_clean_data$stage <- ifelse(penguins_clean_data$stage == "Adult, 1 Egg Stage",  # to edit the stage variable, we can use ifelse (good when we want only two groups)
+                                    "adult one egg",                                    # if the statement above is true (stage = "Adult, 1 Egg Stage"), then it will be replaced with this text (or value)
+                                    "adult two eggs")                                   # if the statement is false it will be replaced with this text (or value)
+levels(as.factor(penguins_clean_data$stage))    # the levels in our cleaned column show that we now have the two categories we specified in the ifelse-statement above
+
+
+
+
+
+
+
+
 
