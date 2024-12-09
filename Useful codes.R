@@ -58,7 +58,7 @@ levels(as.factor(penguins_clean_data$stage))    # the levels in our cleaned colu
 #### ----- Codes for graphing your results ----- ####
 
 # nothing here yet - come back later plz :)
-# dfjhskdfhjksdfjhfgdu
+
 
 
 
